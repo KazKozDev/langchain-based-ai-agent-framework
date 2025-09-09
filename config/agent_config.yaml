@@ -1,0 +1,55 @@
+# Configuration for LangChain Agent with Ollama
+
+# LLM Configuration
+model_name: "gpt-oss:20b"
+base_url: "http://localhost:11434"
+temperature: 0.1
+max_tokens: 2048
+
+# Agent Configuration
+verbose: true
+max_iterations: 5
+early_stopping_method: "generate"
+
+# System Message
+system_message: |
+  You are a helpful AI assistant with access to various tools.
+  Use the available tools to accomplish the user's tasks.
+  Always explain which tool you are using and why.
+  If the required information is not available, say so honestly.
+  Respond in the user's language; if the user writes in Russian, respond in Russian.
+
+# Memory Configuration  
+memory:
+  type: "ConversationBufferMemory"
+  memory_key: "chat_history"
+  return_messages: true
+
+# Logging Configuration
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Tools Configuration
+tools:
+  enabled:
+    - calculator
+    - web_search
+    - file_manager
+    - datetime
+  
+  # Tool-specific settings
+  calculator:
+    max_expression_length: 1000
+  
+  web_search:
+    timeout: 10
+    max_results: 5
+  
+  file_manager:
+    max_file_size_mb: 10
+    allowed_extensions: [".txt", ".md", ".json", ".yaml", ".yml", ".csv"]
+  
+  datetime:
+    default_timezone: "UTC"
+    default_format: "%Y-%m-%d %H:%M:%S"

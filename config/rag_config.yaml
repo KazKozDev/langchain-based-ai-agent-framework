@@ -1,0 +1,149 @@
+# RAG (Retrieval-Augmented Generation) Configuration
+rag:
+  # Enable/disable RAG system
+  enabled: true
+  
+  # Vector store configuration
+  vector_store:
+    # Type: "chroma" or "faiss"
+    type: "chroma"
+    
+    # Persistence directory (relative to project root or absolute path)
+    persist_directory: "./vector_store"
+    
+    # Collection/index name
+    collection_name: "langchain_agent_knowledge"
+    
+    # Embedding model configuration
+    embeddings:
+      # HuggingFace model name for embeddings
+      model_name: "sentence-transformers/all-MiniLM-L6-v2"
+      
+      # Model device ("cpu" or "cuda")
+      device: "cpu"
+      
+      # Normalize embeddings
+      normalize_embeddings: true
+  
+  # Document processing configuration
+  document_processing:
+    # Text splitting configuration
+    text_splitter:
+      # Chunk size in characters
+      chunk_size: 1000
+      
+      # Chunk overlap in characters
+      chunk_overlap: 200
+      
+      # Separators for text splitting (in order of preference)
+      separators: ["\n\n", "\n", " ", ""]
+    
+    # Supported file extensions
+    supported_extensions:
+      - ".txt"
+      - ".md"
+      - ".py"
+      - ".js"
+      - ".json"
+      - ".yaml"
+      - ".yml"
+      - ".xml"
+      - ".html"
+      - ".css"
+      - ".sql"
+      # PDF and DOCX will be added if libraries are available
+    
+    # Default metadata extraction
+    extract_metadata: true
+    
+    # Validate documents before adding
+    validate_documents: true
+  
+  # Retrieval configuration
+  retrieval:
+    # Default number of documents to retrieve
+    default_k: 5
+    
+    # Maximum number of documents to retrieve
+    max_k: 20
+    
+    # Default search type
+    search_type: "similarity"  # "similarity" or "mmr"
+    
+    # Score threshold for filtering results (0.0 to 1.0, lower is more strict)
+    score_threshold: 0.0
+    
+    # Include relevance scores in results
+    include_scores: false
+  
+  # Tool configuration
+  tools:
+    # RAG retrieval tool configuration
+    retrieval:
+      name: "rag_retrieval"
+      enabled: true
+      description: "Retrieve relevant documents from knowledge base using semantic search"
+    
+    # RAG management tool configuration
+    management:
+      name: "rag_management" 
+      enabled: true
+      description: "Manage RAG knowledge base - add documents, clear collection, get info"
+  
+  # Advanced settings
+  advanced:
+    # Auto-persist changes
+    auto_persist: true
+    
+    # Maximum content length for display (characters)
+    max_content_display: 300
+    
+    # Enable content caching
+    enable_caching: true
+    
+    # Cache TTL in seconds
+    cache_ttl: 3600
+    
+    # Background indexing (for large document sets)
+    background_indexing: false
+    
+    # Batch size for bulk operations
+    batch_size: 100
+    
+    # Enable query expansion
+    query_expansion: false
+    
+    # Enable re-ranking
+    enable_reranking: false
+
+# Logging configuration for RAG components
+logging:
+  # Log level for RAG components
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  
+  # Enable detailed logging
+  detailed_logging: false
+  
+  # Log file path (optional)
+  log_file: null
+
+# Performance tuning
+performance:
+  # Memory management
+  memory:
+    # Clear embeddings cache periodically
+    clear_cache_interval: 3600  # seconds
+    
+    # Maximum cache size (MB)
+    max_cache_size: 512
+  
+  # Parallel processing
+  parallel:
+    # Enable parallel document processing
+    enabled: false
+    
+    # Number of workers (0 = auto-detect)
+    workers: 0
+    
+    # Batch size for parallel processing
+    batch_size: 10

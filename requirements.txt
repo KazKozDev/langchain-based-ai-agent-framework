@@ -1,0 +1,43 @@
+# Core LangChain dependencies
+langchain==0.2.14
+langchain-community==0.2.12
+langchain-huggingface==0.0.3
+langchain-ollama==0.1.2
+PyYAML==6.0.1
+python-dotenv==1.0.1
+pydantic>=2.0
+selenium
+webdriver-manager
+beautifulsoup4
+lxml
+
+# HTTP requests for search tool
+requests==2.31.0
+
+# Date/time handling 
+pytz==2023.3
+
+# System monitoring for system info tool
+psutil==5.9.6
+
+# Additional utilities
+pathlib2==2.3.7; python_version < "3.4"
+
+# RAG and Vector Database dependencies
+chromadb==0.4.15
+langchain-chroma==0.1.2
+sentence-transformers>=2.6.0
+faiss-cpu==1.8.0.post1
+tiktoken==0.5.1
+pypdf>=3.17.0,<4.0
+python-docx==1.1.0
+markdown==3.5.1
+transformers>=4.43
+torch>=2.3
+
+# Excel support
+openpyxl==3.1.2
+xlrd==2.0.1
+
+# Image processing
+Pillow==10.0.1

@@ -1,0 +1,48 @@
+# Ollama Server Configuration
+
+# Server Settings
+server:
+  host: "localhost"
+  port: 11434
+  base_url: "http://localhost:11434"
+
+# Model Configuration
+models:
+  primary: "gpt-oss:20b"
+  fallback: "llama2:7b"
+  
+  # Available models (update based on your Ollama installation)
+  available:
+    - name: "gpt-oss:20b"
+      description: "Primary model for the agent"
+      parameters:
+        temperature: 0.1
+        top_p: 0.9
+        top_k: 40
+        repeat_penalty: 1.1
+    
+    - name: "llama2:7b" 
+      description: "Fallback model"
+      parameters:
+        temperature: 0.2
+        top_p: 0.9
+        top_k: 40
+        repeat_penalty: 1.1
+
+# Connection Settings
+connection:
+  timeout: 30
+  retry_attempts: 3
+  retry_delay: 1
+
+# Performance Settings
+performance:
+  num_ctx: 2048  # Context window size
+  num_predict: 512  # Max tokens to predict
+  num_thread: 4  # Number of threads
+
+# Monitoring
+monitoring:
+  log_requests: true
+  log_responses: false  # Set to true for debugging
+  metrics_enabled: true

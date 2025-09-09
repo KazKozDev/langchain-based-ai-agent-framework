@@ -1,5 +1,11 @@
 # LangChain Ollama Agent
 
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![LangChain](https://img.shields.io/badge/langchain-latest-green.svg)](https://python.langchain.com/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Ollama](https://img.shields.io/badge/ollama-powered-orange.svg)](https://ollama.ai/)
+[![RAG](https://img.shields.io/badge/RAG-enabled-purple.svg)](#rag-system-features)
+
 A production-ready LangChain-based AI agent framework with comprehensive tool integration, RAG capabilities, and unrestricted web search functionality.
 
 ## Overview
